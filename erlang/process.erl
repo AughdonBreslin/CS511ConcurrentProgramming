@@ -1,4 +1,4 @@
--module(tut14).
+-module(process).
 
 -export([start/0, say_something/2]).
 
@@ -9,5 +9,5 @@ say_something(What, Times) ->
     say_something(What, Times - 1).
 
 start() ->
-    spawn(tut14, say_something, [hello, 3]),
-    spawn(tut14, say_something, [goodbye, 3]).
+    spawn(process, say_something, [hello, 3]),
+    spawn(process, say_something, [goodbye, 3]).
