@@ -1,11 +1,13 @@
-
+// turnstile
 byte c = 0;
 
 proctype P() {
     byte i = 0;
+    byte temp = 0;
     do
      :: i < 10 ->
-        c++;
+        temp = c;
+        c = temp+1;
         i++;
      :: else ->
         break
@@ -14,9 +16,11 @@ proctype P() {
 
 proctype Q() {
     byte i=0;
+    byte temp = 0;
     do
      :: i<10 ->
-        c++;
+        temp = c;
+        c = temp+1;
         i++;
      :: else ->
         break
@@ -28,4 +32,7 @@ init {
         run P();
         run Q();
     }
+    (_nr_pr == 1);
+    printf("Total %d\n", c);
+    assert(c>2);
 }

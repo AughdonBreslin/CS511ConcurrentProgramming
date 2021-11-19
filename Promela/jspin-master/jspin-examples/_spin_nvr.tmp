@@ -1,0 +1,27 @@
+never p0 {    /* !([] ((gate<=1))) */
+T0_init:
+	do
+	:: atomic { (! (((gate<=1)))) -> assert(!(! (((gate<=1))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
+never p1 {    /* !([] ((! ((count==0))) || ((gate==0)))) */
+T0_init:
+	do
+	:: atomic { (! (((! ((count==0))) || ((gate==0))))) -> assert(!(! (((! ((count==0))) || ((gate==0)))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
+never p2 {    /* !([] ((! (((gate==0)) && ((((test[0]==0)) && ((test[1]==0))) && ((test[2]==0))))) || ((count==0)))) */
+T0_init:
+	do
+	:: atomic { (! (((! (((gate==0)) && ((((test[0]==0)) && ((test[1]==0))) && ((test[2]==0))))) || ((count==0))))) -> assert(!(! (((! (((gate==0)) && ((((test[0]==0)) && ((test[1]==0))) && ((test[2]==0))))) || ((count==0)))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}
