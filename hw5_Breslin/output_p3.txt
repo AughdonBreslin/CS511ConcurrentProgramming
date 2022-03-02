@@ -1,0 +1,42 @@
+C:\Users\aughb\CS511ConcurrentProgramming\Promela>spin -a cr.pml
+ltl p3: [] (((nr_leaders==0)) || ((nr_leaders==1)))
+
+C:\Users\aughb\CS511ConcurrentProgramming\Promela>gcc -o pan pan.c
+
+C:\Users\aughb\CS511ConcurrentProgramming\Promela>pan -a -f
+
+(Spin Version 6.5.1 -- 20 December 2019)
+        + Partial Order Reduction
+
+Full statespace search for:
+        never claim             + (p3)
+        assertion violations    + (if within scope of claim)
+        acceptance   cycles     + (fairness enabled)
+        invalid end states      - (disabled by never claim)
+
+State-vector 180 byte, depth reached 260, errors: 0
+     3355 states, stored
+     3840 states, matched
+     7195 transitions (= stored+matched)
+      360 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.627       equivalent memory usage for states (stored*(State-vector + overhead))
+    0.775       actual memory usage for states
+   64.000       memory used for hash table (-w24)
+    0.343       memory used for DFS stack (-m10000)
+   65.027       total actual memory usage
+
+
+unreached in proctype nnode
+        cr.pml:52, state 30, "-end-"
+        (1 of 30 states)
+unreached in init
+        (0 of 35 states)
+unreached in claim p3
+        _spin_nvr.tmp:8, state 10, "-end-"
+        (1 of 10 states)
+
+pan: elapsed time 0.031 seconds
+pan: rate 108225.81 states/second

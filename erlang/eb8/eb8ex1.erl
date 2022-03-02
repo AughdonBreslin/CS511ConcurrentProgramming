@@ -10,15 +10,15 @@ counter_server(State) ->
     receive
         {bump} ->
             counter_server(State+1);
-        {read,From} ->
-            From!{State},
+        {done,PID} ->
+            io:format("Turnstile ~w finished, count at ~w~n", [PID, State]),
             counter_server(State)
 end.
 
-turnstile(_C,0) ->
+turnstile(C,0) ->
     %% C is the PID of the counter, and
     %% N is the number of times the turnstile turns
-    done;
+    C!{done,self()};
 turnstile(C,N) when N>0 -> 
     C!{bump},
     turnstile(C,N-1).

@@ -1,0 +1,41 @@
+# 1 "eb9ex6.pml"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "eb9ex6.pml"
+byte np = 0;
+byte nq = 0;
+
+proctype P() {
+    do
+     ::
+        np = nq+1;
+        do
+         :: (nq==0) || (np<=nq) -> break;
+            else
+        od;
+crit:
+        np = 0;
+
+    od;
+}
+
+proctype Q() {
+    do
+     ::
+        nq = np+1;
+        do
+         :: (np==0) || (nq<np) -> break;
+            else
+        od;
+        crit:
+        nq = 0;
+
+    od;
+}
+
+init {
+    atomic {
+        run P();
+        run Q();
+    }
+}

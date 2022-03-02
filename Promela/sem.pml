@@ -1,13 +1,13 @@
 
 byte cBeforeA = 0;
 
-inline acquire(int s) {
+inline acquire(s) {
     atomic {
         s>0;
         s--;
     }
 }
-inline release(int s) {
+inline release(s) {
     s++;
 }
 
